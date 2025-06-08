@@ -1,7 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
-import Auth from '../utils/auth';
-import { login } from "../api/authAPI";
+import Auth from '../utils/auth'; // Assuming Auth handles token storage and user authentication
+import { login } from "../api/authAPI"; // Assuming this function handles the API call for login
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -22,9 +22,9 @@ const Login = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const data = await login(loginData);
-      Auth.login(data.token);
-      navigate('/'); // Redirect to the home page or dashboard after login
+      const data = await login(loginData); // Call the login API function
+      Auth.login(data.token); // Store the token using Auth utility
+      navigate('/kanban'); // Redirect to the main Kanban board page after login
     } catch (err) {
       console.error('Failed to login', err);
       setError('Invalid username or password.'); // Set error message
