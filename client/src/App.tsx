@@ -1,7 +1,7 @@
 import { Outlet, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './pages/Login'; // Import your Login component
-import Home from './pages/Home'; // Import your Home component
+import Home from './pages/Home'; // Ensure this path is correct
 
 function App() {
   return (
