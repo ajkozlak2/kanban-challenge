@@ -4,11 +4,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
 import App from './App.tsx';
-import Board from './pages/Board.tsx';
+import Board from './pages/Board.tsx'; // Kanban board component
 import ErrorPage from './pages/ErrorPage.tsx';
 import EditTicket from './pages/EditTicket.tsx';
 import CreateTicket from './pages/CreateTicket.tsx';
 import Login from './pages/Login.tsx';
+import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 
 // Create the router with the defined routes
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Board />
+        element: <Board /> // Default route
       }, 
       {
         path: 'edit', // Note: No leading slash for child routes
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: 'login', // Note: No leading slash for child routes
         element: <Login />
+      },
+      {
+        path: 'kanban', // Path for the Kanban board
+        element: <ProtectedRoute element={<Board />} /> // Protect the Kanban board route
       }
     ]
   }
@@ -44,8 +49,3 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
-}

@@ -1,10 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
-
-interface JwtPayload {
-  username: string; // Adjust this based on your actual payload structure
-}
-
+import jwt from 'jsonwebtoken'; // Keep this import if you still want to verify the token
+// Define the structure of your JWT payload
 interface JwtPayload {
   username: string; // Adjust this based on your actual payload structure
 }
@@ -28,7 +24,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     return; // Explicitly return to ensure all code paths return a value
   }
 
-  // Verify the token
+  // Verify the token using jwt.verify if you want to check the signature
   jwt.verify(token, process.env.JWT_SECRET as string, (err: jwt.VerifyErrors | null, decoded: any) => {
     if (err) {
       res.sendStatus(403); // Forbidden if token is invalid
