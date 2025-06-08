@@ -22,12 +22,7 @@ const mongoUsername = process.env.DB_USERNAME; // Get username from .env
 const mongoPassword = process.env.DB_PASSWORD; // Get password from .env
 const mongoURI = `mongodb+srv://${mongoUsername}:${mongoPassword}@your-cluster.mongodb.net/your-database?retryWrites=true&w=majority`;
 
-interface MongoConnectOptions {
-  useNewUrlParser: boolean;
-  useUnifiedTopology: boolean;
-}
-
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true } as MongoConnectOptions)
+mongoose.connect(mongoURI)
   .then(() => {
     console.log('MongoDB connected successfully');
     // Sync Sequelize and start the server after MongoDB connection is established

@@ -9,5 +9,9 @@
       // "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */
     },
     "include": ["src"],
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "typeRoots": [
+    "./node_modules/@types",
+    "../node_modules/@types", // This line is optional, but can help if types are expected in the root node_modules
+    "./src/types"
+]
 }
